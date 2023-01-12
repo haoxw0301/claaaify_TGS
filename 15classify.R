@@ -151,3 +151,16 @@ pie(reads_num_d1$V1,
     main = "beyond-gene transcripts", cex = 1)
 legend("bottom", legend = reads_num_d1$label, fill = reads_num_d1$color, cex = 1)
 dev.off()
+
+### 
+res <- data.frame(
+    type = c(reads_num_a$type,
+            reads_num_b1$type, reads_num_b2$type,
+            reads_num_c1$type, reads_num_d1$type),
+    ratios = c(reads_num_a$piepercent,
+            reads_num_b1$piepercent, reads_num_b2$piepercent,
+            reads_num_c1$piepercent, reads_num_d1$piepercent)
+)
+write.table(res[c(1, 3, 11, 9, 10, 8, 4, 2, 6, 7, 5),],
+        paste("classify_res_2/", Args[1], "_reads_ratio.txt", sep = ""),
+        row.names = F, col.names = F, quote = F, sep = "\t")
